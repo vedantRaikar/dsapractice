@@ -1,40 +1,41 @@
-#include<stdio.h>
+#include<iostream> 
+using namespace std;
+
+int term ;
+
+
+int fibo(int first , int second ){
+
+ static int i = 1 ;
+ int nxt ;
  
-int term;
-int fibonacci(int prNo, int num);
- 
-int main() 
-{
-   static int prNo = 0, num = 1;
-	printf("\n\n Recursion : Print Fibonacci Series :\n");
-	printf("-----------------------------------------\n");   
- 
-   printf(" Input number of terms for the Series (< 20) : ");
-   scanf("%d", &term);
- printf(" The Series are :\n"); 
-   printf(" 1  ");
-   fibonacci(prNo, num);
-    printf("\n\n");
-    
-    return 0;
+ if( i == term){
+ 	return 0 ;
+ }
+ else{
+ 	nxt = first + second ;
+ 	first = second ;
+ 	second = nxt ;
+ 	
+ 	cout << nxt << " ";
+ 	i++;
+ 	
+ 	fibo(first ,  second );
+ 	
+ }
+ return 0 ; 
 }
  
-int fibonacci(int prNo, int num) 
-{
-   static int i = 1;
-   int nxtNo;
- 
-   if (i == term)
-      return (0);
-   else 
-   {
-      nxtNo = prNo + num;
-      prNo = num;
-      num = nxtNo;
-      printf("%d  ", nxtNo);
- 
-      i++;
-      fibonacci(prNo, num); //recursion, calling the function fibonacci itself
-   }
-   return (0);
-}
+ int main (){
+ 	int first = 0 ; int second = 1 ;
+ 	int terms ; 
+ 	cout << "Enter the limit of terms you want : ";
+ 	cin >> term;
+ 	cout << "The terns of the fibonacci series is : ";
+ 	cout << first << " "; 
+ 	cout << second << " ";
+ 	fibo(first , second);
+ 	return 0;
+ 	
+ }
+
