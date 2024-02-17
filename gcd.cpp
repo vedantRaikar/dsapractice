@@ -1,31 +1,22 @@
-#include<iostream>
-using namespace std;
+#include <stdio.h>
+int main()
+{
+    int n1, n2, i, gcd;
 
-int gcdnaive(int a , int b){
+    printf("Enter two integers: ");
+    scanf("%d %d", &n1, &n2);
+    int small = (n1 < n2)?n1:n2;
+    int opcount = 0;
 
-int current_gcd = 1 ;
-for(int d = 2 ; d <= a && d <= b ; d++){
-	if(a % d == 0 && b % d == 0){
-		if(d > current_gcd){
-			current_gcd = d;
-		}
-	}
-}
-return current_gcd;
-}
+    for(i=1; i <=small; ++i)
+    {
+        // Checks if i is factor of both integers
+        opcount++;
+        if(n1%i==0 && n2%i==0)
+            gcd = i;
+    }
+    printf("Num BAsic operation: %d" , opcount);
+    printf("G.C.D of %d and %d is %d", n1, n2, gcd);
 
-int gcd(long long x , long long y){
-	long long a = max(x,y);
-	long long b = min(x,y);
-	if(b == 0)
-	  return a;
-	else
-	  return gcd(b , a%b);
-}
-
-int main (){
-	int a , b ;
-	cin >> a >> b;
-	cout << gcd(a,b) << endl;
-	return 0; 
+    return 0;
 }
